@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dhu.dao.OperatorMapper">
+    <insert id="insertOperator" useGeneratedKeys="true" keyProperty="id">
+        insert into operator
+        values (#{id},#{rid},#{userName},#{password},#{email});
+    </insert>
+
+    <select id="selectOperatorByName" resultType="com.dhu.pojo.Operator">
+        select * from operator where userName = #{username}
+    </select>
+
+    <select id="selectAllOperator" resultType="com.dhu.pojo.Operator">
+        select * from operator
+    </select>
+
+    <delete id="deleteOperatorById">
+        delete from operator where id = #{id}
+    </delete>
+
+    <update id="updateOperator">
+        update operator
+        set rid = #{rid},userName = #{userName},
+            password = #{password},email = #{email}
+        where id = #{id}
+    </update>
+</mapper>

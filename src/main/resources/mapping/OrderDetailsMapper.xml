@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dhu.dao.OrderDetailsMapper">
+    <insert id="insertOrderDetails">
+        insert into orderdetails values (#{orderId},#{productId},
+                                         #{productName},#{productCategory},
+                                         #{buyPrice},#{buyNumber},#{buyAllPrice})
+    </insert>
+
+    <select id="selectAllOrderDetails" resultType="com.dhu.pojo.OrderDetails">
+        select * from orderdetails
+    </select>
+
+    <select id="selectOrderDetailsByOrdersId" resultType="com.dhu.pojo.OrderDetails">
+        select * from orderdetails where orderId = #{orderId}
+    </select>
+
+    <select id="selectOrderDetailsByRepositoryName" resultType="com.dhu.pojo.OrderDetails">
+        select * from orderdetails where repositoryName = #{repositoryName}
+    </select>
+
+    <update id="updateOrderDetails">
+        update orderdetails
+        set productId = #{productId},productName = #{productName},
+            prdouctCategory = #{productCategory},buyPrice = #{buyPrice},
+            buyNumber = #{buyNumber},buyAllPrice = #{buyAllPrice}
+        where orderId = #{orderId}
+    </update>
+
+    <delete id="deleteOrderDetails">
+        delete from orderDetails where orderId = #{orderId}
+    </delete>
+</mapper>

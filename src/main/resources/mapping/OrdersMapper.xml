@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dhu.dao.OrdersMapper">
+
+    <select id="selectAllOrders" resultType="com.dhu.pojo.Orders">
+        select  * from orders
+    </select>
+
+    <select id="selectOrdersByRepositoryName" resultType="com.dhu.pojo.Orders">
+        select * from orders where repositoryName = #{repositoryName}
+    </select>
+
+    <insert id="insertOrder">
+        insert into orders values (#{id},#{date},#{supplier},
+                                   #{repositoryName},#{detail})
+    </insert>
+
+    <delete id="deleteOrderById">
+        delete from orders where id = #{id}
+    </delete>
+
+    <update id="updateOrdersById">
+        update orders set date  = #{date},supplier = #{supplier},
+                          repositoryName = #{repositoryName},
+                          detail = #{detail}
+        where id = #{id}
+    </update>
+</mapper>
